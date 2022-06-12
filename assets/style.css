@@ -1,8 +1,21 @@
-.search {
-
-};
-.header {
-    display: block;
-    background-color: blue;
-    padding: 20px;
+.main {
+    background-color: white;
+    font-size: medium;
 }
+.search {
+    display: flex;
+}
+.five-day {
+    text-align: center;
+}
+.weather {
+    text-align: center;
+}
+.top {
+    display: block;
+    padding: 20px;
+    font-size: 45px;
+    text-align: center;
+    color: aliceblue;
+    background-color: rgb(59, 0, 207)
+};
