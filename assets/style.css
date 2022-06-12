@@ -1,21 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 .main {
     background-color: white;
     font-size: medium;
 }
 .search {
-    display: flex;
+    font-size: 25px;
+    font-weight: bold;
 }
-.five-day {
-    text-align: center;
-}
-.weather {
-    text-align: center;
-}
-.top {
+.header {
     display: block;
     padding: 20px;
     font-size: 45px;
     text-align: center;
-    color: aliceblue;
     background-color: rgb(59, 0, 207)
 };
+.search-history {
+    
+}
