@@ -21,7 +21,7 @@
                 <!-- section 1 -->
                 <div class="col-sm-4 p-0">
                     <!-- search -->
-                    <div class="form-container">
+                    <div>
                         <form id="search">
                             <!-- input -->
                             <div class="row m-0">
@@ -29,7 +29,7 @@
                             </div>
                             <!-- search button and input -->
                             <div class="row m-0">
-                                <div class="col-sm-10 p-0">
+                                <div class="col-sm-6 p-0">
                                     <input type="text" id="seach" name="search" class="search rounded">
                                 </div>
                                 <div class="col-sm-2 p-1">
@@ -47,36 +47,43 @@
                 <div class="col-sm-8 p-0">
                     <div id="current-weather" class="row">
                         <div class="current-city-weather">
-                            
+                            <h2 id="current-title" class="current-title d-inline"></h2>
+                            <img id="current-weather-icon" class="d-inline" src="" alt="">
                         </div>
                         <P class="current-temp" id="current-temp"></P>
                         <p class="current-humidity" id="current-humidity"></p>
                         <p class="current-wind" id="current-wind"></p>
                         <p class="current-uv" id="current-uv"></p>
+                        <p class="current-number rounded" id="current-number"></p>
                     </div>
                     <!--5 day forecast-->
                     <div class="future-forecast" id="future-forecast">
                         <p class="day-1" id="day-1"></p>
+                        <img id="day-1-icon" src="" alt="current weather icon">
                         <p class="day-1-temp" id="day-1-temp"></p>
                         <p class="day-1-humidity" id="day-1-humidity"></p>
                     </div>
                     <div class="future-forecast" id="future-forecast">
                         <p class="day-2" id="day-2"></p>
+                        <img id="day-2-icon" src="" alt="current weather icon">
                         <p class="day-2-temp" id="day-2-temp"></p>
                         <p class="day-2-humidity" id="day-2-humidity"></p>
                     </div>
                     <div class="future-forecast" id="future-forecast">
                         <p class="day-3" id="day-3"></p>
+                        <img id="day-3-icon" src="" alt="current weather icon">
                         <p class="day-3-temp" id="day-3-temp"></p>
                         <p class="day-3-humidity" id="day-3-humidity"></p>
                     </div>
                     <div class="future-forecast" id="future-forecast">
                         <p class="day-4" id="day-4"></p>
+                        <img id="day-4-icon" src="" alt="current weather icon">
                         <p class="day-4-temp" id="day-4-temp"></p>
                         <p class="day-4-humidity" id="day-4-humidity"></p>
                     </div>
                     <div class="future-forecast" id="future-forecast">
                         <p class="day-5" id="day-5"></p>
+                        <img id="day-5-icon" src="" alt="current weather icon">
                         <p class="day-5-temp" id="day-5-temp"></p>
                         <p class="day-5-humidity" id="day-5-humidity"></p>
                     </div>
@@ -84,7 +91,7 @@
             </div>
         </div>
     </main>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./assets/script.js"></script>
 </body>
 </html>

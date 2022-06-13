@@ -1,9 +1,47 @@
 var apiKey = "16c08d72512cd292161652f7d9f82632";
+var savedSearches = [];
 
+// searched cities
+var searchHistoryList = function(cityName) {
+    $('.past-search:contains("' + cityName + '")').remove();
 
+    var searchHistoryEntry = $("<p>");
+    searchHistoryEntry.addClass("past-search");
+    searchHistoryEntry.text(cityName);
+
+    var searchEntryContainer = $("<div>");
+    searchEntryContainer.addClass("past-search-container");
+    searchEntryContainer.append(searchHistoryEntry);
+
+    var searchHistoryContainerEl = $("#search-history");
+    searchHistoryContainerEl.append(searchEntryContainer);
+
+    if (savedSearches.length > 0){
+        var previousSavedSearches = localStorage.getItem("savedSearches");
+        savedSearches = JSON.parse(previousSavedSearches);
+    }
+    savedSearches.push(cityName);
+    localStorage.setItem("savedSearches", JSON.stringify(savedSearches));
+
+    $("#search-input").val("")
+};
+
+var loadSearchHistory = function() {
+    var savedSearchHistory = localStorage.getItem("savedSearches");
+
+    if (!savedSearchHistory) {
+        return false;
+    }
+    savedSearchHistory = JSON.parse(savedSearchHistory);
+    for (var i = 0; i < savedSearchHistory.length; i++) {
+        searchHistoryList(savedSearchHistory[i]);
+    }
+};
+
+loadSearchHistory ();
 
 var currentWeatherSection = function(cityName) {
-    fetch("https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}")
+    fetch("https://api.openweathermap.org/data/3.0/weather?q=${cityName}&appid=${apiKey}")
         .then(function(response) {
             return response.json();
         })
@@ -11,15 +49,15 @@ var currentWeatherSection = function(cityName) {
             var cityLon = response.coord.lon;
             var cityLat = response.coord.lat;
 
-    fetch("https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&exclude=minutely,hourly,alerts&units=imperial&appid=${apiKey}")
+    fetch("https://api.openweathermap.org/data/3.0/onecall?lat=${cityLat}&lon=${cityLon}&exclude=minutely,hourly,alerts&units=imperial&appid=${apiKey}")
         .then(function(response) {
             return response.json();
         })
         .then(function(response){
             searchHistoryList(cityName);
 
-        var currentWeatherContainer = $("#current-weather-container");
-        currentWeatherContainer.addClass("current-weather-container");
+        var currentWeatherContainer = $("#current-weather");
+        currentWeatherContainer.addClass("current-weather");
 
 
         var currentTitle = $("#current-title");
@@ -31,7 +69,7 @@ var currentWeatherSection = function(cityName) {
         currentIcon.attr("src", "https://openweathermap.org/img/wn/${currentIconCode}@2x.png");
 
         // add current temperature to page
-        var currentTemperature = $("#current-temperature");
+        var currentTemperature = $("#current-temp");
         currentTemperature.text("Temperature: " + response.current.temp + " \u00B0F");
 
         // add current humidity to page
@@ -66,15 +104,3 @@ var currentWeatherSection = function(cityName) {
             alert("We could not find the city you searched for. Try searching for a valid city.");
         });
 };
-
-
-
-
-
-
-            
-// var getWeather = function(weather) {
-//     var weather = "https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${apiKey}&units=standard";
-//     console.log(weather)
-// };
-// getWeather();

@@ -19,5 +19,11 @@
     background-color: rgb(59, 0, 207)
 };
 .search-history {
-    
+    border-color: blue;
+}
+.current-weather {
+    border-color: black;
+    border-width: thin;
+    border-style: double;
+    margin: 10px 0px;
 }
